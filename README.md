@@ -1,5 +1,11 @@
-npm install react <br>
-npm install react-router-dom <br>
+# [Dongguk Univ AI Graduate Calculator for U] -> DAGCU
+
+- local setup
+  ```
+  npm install react 
+  npm install react-router-dom 
+  ```
+  
 .env파일의 내용을 수정해야합니다.  <br>
 DB_HOST=localhost <br>
 DB_USER="yourname" <br>
