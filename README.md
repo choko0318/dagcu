@@ -1,5 +1,13 @@
 npm install react
 npm install react-router-dom
+.env파일의 내용을 수정해야합니다.
+DB_HOST=localhost
+DB_USER="yourname"
+DB_PASSWORD="yourpassword!"
+DB_NAME="yourdbname"
+JWT_SECRET=1
+PORT=5001
+
 -- ========================================
 -- Database Schema for Graduation Management
 -- ========================================
