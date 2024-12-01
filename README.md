@@ -21,8 +21,8 @@ AI융합학부 학생들을 위한 맞춤형 졸업관리 시스템
 
 - local setup
   ```
-  npm install react 
-  npm install react-router-dom 
+  npm install react react-dom react-router-dom axios
+  npm install express dotenv mysql2 jsonwebtoken bcrypt cors body-parsers
   ```
   
 - backend/.env.sample의 내용 수정 -> 이후 파일명 env로 변경
