@@ -25,7 +25,7 @@ AI융합학부 학생들을 위한 맞춤형 졸업관리 시스템
   npm install express dotenv mysql2 jsonwebtoken bcrypt cors body-parsers
   ```
   
-- backend/.env.sample의 내용 수정 -> 이후 파일명 env로 변경
+- backend/.env.sample -> .env로 변경
   ```
   DB_HOST=localhost
   DB_USER="yourname"
@@ -35,7 +35,7 @@ AI융합학부 학생들을 위한 맞춤형 졸업관리 시스템
   PORT=5001 
   ```
 
-- Database/CreateTable.sql 쿼리 실행
+- Database/CreateTable.sql -> insert_graduation_courses.sql 쿼리 실행
 
 - Frontend 실행
   ```
