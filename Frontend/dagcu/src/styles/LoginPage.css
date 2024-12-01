@@ -1,0 +1,101 @@
+/* 전체 컨테이너 */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #ffffff;
+  font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* 로그인 박스 */
+.login-box {
+  text-align: center;
+  padding: 20px;
+}
+
+/* 로고 스타일 */
+.logo {
+  font-size: 4rem;
+  font-weight: bold;
+  color: black;
+  margin-bottom: -24px;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 30px;
+  letter-spacing: -1px;
+}
+
+/* 폼 스타일 */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.label {
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 10px 0 5px;
+  text-align: left;
+  width: 100%;
+  max-width: 300px;
+}
+
+.input {
+  width: 300px;
+  padding: 10px;
+  border: 2px solid #a25cf5; /* 보라색 테두리 */
+  border-radius: 10px;
+  font-size: 1rem;
+  margin-bottom: 15px;
+  outline: none;
+}
+
+.input:focus {
+  border-color: #9336ff; /* 더 진한 보라색 */
+  box-shadow: 0 0 8px rgba(147, 54, 255, 0.6);
+}
+
+/* 제출 버튼 */
+.submit-button {
+  font-size: 12px;
+  color: #a25cf5;
+  background-color: transparent;
+  border: 2px solid #a25cf5;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+  font-weight: 900;
+}
+
+.submit-button:hover {
+  background-color: #a25cf5;
+  color: white;
+  transform: scale(1.1);
+}
+
+/* 가입하기 버튼 */
+.signup-button {
+  font-size: 16px;
+  margin-top: 15px;
+  color: #9336ff;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: 900;
+}
+
+.signup-button:hover {
+  text-decoration: underline;
+}

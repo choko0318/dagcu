@@ -1,0 +1,183 @@
+h2.page-title {
+  margin-right: 40px;
+}
+
+.course-list-container {
+  text-align: center;
+  font-family: "Pretendard", sans-serif;
+  padding: 20px;
+}
+
+.logo {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.page-title {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  font-weight: 900;
+  color: #a25cf5;
+}
+
+.search-filters {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+}
+
+.filter-group label {
+  font-size: 1rem;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: left;
+}
+
+.filter-group input,
+.filter-group select {
+  padding: 10px;
+  font-size: 1rem;
+  border: 2px solid #a25cf5;
+  border-radius: 5px;
+  width: 200px;
+}
+
+.search-button {
+  margin-top: 24px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #a25cf5;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  height: 42.5px;
+}
+
+.search-button:hover {
+  background-color: #9336ff;
+}
+
+.course-list table {
+  width: 80%;
+  margin: 0 auto;
+  border-collapse: collapse;
+}
+
+.course-list th,
+.course-list td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+.course-list th {
+  background-color: #f2f2f2;
+}
+
+.navigation-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.navigation-buttons button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: #a25cf5;
+  border: 2px solid #a25cf5;
+  border-radius: 5px;
+  background-color: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.navigation-buttons button:hover {
+  background-color: #a25cf5;
+  color: #fff;
+}
+
+/* CourseList.css */
+
+/* 모달 오버레이 */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+/* 모달 콘텐츠 */
+.modal {
+  background: #fff;
+  padding: 20px;
+  max-width: 500px;
+  width: 90%;
+  border-radius: 8px;
+  text-align: center;
+}
+
+/* 학점 입력 필드 */
+.grade-input,
+.year-semester-input {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.grade-input label,
+.year-semester-input label {
+  margin-bottom: 5px;
+}
+
+.grade-input input,
+.year-semester-input input,
+.year-semester-input select {
+  padding: 8px;
+  width: 80%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+/* 모달 버튼 */
+.modal-buttons {
+  margin-top: 20px;
+}
+
+.modal-buttons button {
+  margin: 0 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+}
+
+.modal-buttons button:first-child {
+  background-color: #4caf50; /* 초록색 */
+  color: white;
+}
+
+.modal-buttons button:last-child {
+  background-color: #f44336; /* 빨간색 */
+  color: white;
+}
+
+/* Toast 알림 스타일링 (기본 제공되므로 추가 스타일링 불필요) */
