@@ -1,5 +1,5 @@
 
--- Insert Graduation Requirements
+# Insert Graduation Requirements
 INSERT INTO GraduationRequirement (
     MajorClassification, LiberalArtsCredits, GeneralEducationCredits, MajorCredits,
     CapstoneCourseCount, BasicElectiveCredits, IsScienceCourseRequired, IsComputerScienceRequired
@@ -16,7 +16,7 @@ VALUES
 ('24AISWAI', 22, 25, 60, 2, 0, TRUE, TRUE),  -- AI 전공
 ('CAI', 21, 17, 60, 2, 6, FALSE, TRUE);   -- 컴퓨터 AI
 
--- Insert Courses
+# Insert Courses
 INSERT INTO Course (CourseNum, CourseName, CourseType, IsCapstone, IsEnglishLecture, Credit, OfferedSemester)
 VALUES
 ('AID2002', '통계이론2', '전공', 0, 0, 3, '2'),
@@ -40,7 +40,7 @@ VALUES
 ('CSC4019', '종합설계2', '전공', 1, 1, 3, 'both'),
 ('CSC2008', '알고리즘', '전공', 0, 0, 3, 'both');
 
--- Insert Prerequisite Courses
+# Insert Prerequisite Courses
 INSERT INTO PrerequisiteCourses (CourseNum, PrerequisiteCourseNum)
 VALUES
 ('AID2002', 'AID2001'), -- 통계이론1 -> 통계이론2
