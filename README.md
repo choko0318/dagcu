@@ -18,6 +18,7 @@ AI융합학부 학생들을 위한 맞춤형 졸업관리 시스템
 
 ---
 <div><h3>세팅 방법</h3></div>
+
 - local setup
   ```
   npm install react 
