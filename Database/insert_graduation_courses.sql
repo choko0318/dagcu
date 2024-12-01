@@ -1,4 +1,3 @@
-
 # Insert Graduation Requirements
 INSERT INTO GraduationRequirement (
     MajorClassification, LiberalArtsCredits, GeneralEducationCredits, MajorCredits,
