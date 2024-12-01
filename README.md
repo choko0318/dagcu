@@ -11,7 +11,7 @@
   npm install react-router-dom 
   ```
   
-- backend/.env.sample의 내용 수정
+- backend/.env.sample의 내용 수정 -> 이후 파일명 env로 변경
   ```
   DB_HOST=localhost
   DB_USER="yourname"
@@ -20,6 +20,15 @@
   JWT_SECRET=1
   PORT=5001 
   ```
-- 이후 파일명 env로 변경
 
 - Database/CreateTable.sql 쿼리 실행
+
+- Frontend 실행
+  ```
+  npm start
+  ```
+
+- backend 실행
+  ```
+  node server.js
+  ```
