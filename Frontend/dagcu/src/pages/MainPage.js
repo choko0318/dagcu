@@ -10,6 +10,7 @@ const MainPage = () => {
   const [graduationInfo, setGraduationInfo] = useState(null); // 초기값을 null로 설정
   const [loading, setLoading] = useState(true); // 로딩 상태 추가
   const [error, setError] = useState(null); // 에러 상태 추가
+  const [englishScore, setEnglishScore] = useState(""); // 영어 점수 상태
 
   const navigate = useNavigate();
   const location = useLocation(); // 경로 변경 감지를 위한 훅 추가
@@ -62,7 +63,33 @@ const MainPage = () => {
   const handleNavigation = (path) => {
     navigate(path); // 경로로 이동
   };
+  const handleEnglishScoreUpdate = async () => {
+    try {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        navigate("/login");
+        return;
+      }
 
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      };
+
+      // 영어 점수 업데이트 요청
+      await axios.put(
+        "/api/update-english-score",
+        { englishScore }, // 영어 점수 전달
+        config
+      );
+
+      alert("영어 점수가 저장되었습니다.");
+    } catch (err) {
+      console.error("영어 점수 업데이트 오류:", err);
+      alert("영어 점수를 저장하는 중 오류가 발생했습니다.");
+    }
+  };
   if (loading) {
     return <div>로딩 중...</div>;
   }
@@ -106,10 +133,14 @@ const MainPage = () => {
     graduationInfo?.graduationRequirement?.EnglishLectureRequirement ?? 4;
   const capstoneCourseRequirement =
     graduationInfo?.graduationRequirement?.CapstoneCourseRequirement ?? "N/A";
-
+  const handleLogoClick = () => {
+    navigate("/"); // 메인 경로로 이동
+  };
   return (
     <div className="main-container">
-      <h1 className="logo">DAGCU</h1>
+      <h1 className="logo" onClick={handleLogoClick}>
+        DAGCU
+      </h1>
       <p className="subtitle">DGU AI Graduate Calculator for U</p>
 
       <p className="subtitle2">
@@ -136,7 +167,14 @@ const MainPage = () => {
           {generalEducationCreditsRequired}학점 필요)
         </p>
         <p>평균 평점 | {formattedGPA} (2.0 이상)</p>
-        <p>외국어 성적 | {foreignLanguageScore}점 (TOEIC 700 이상)</p>
+        <p>
+          외국어 성적 |{" "}
+          {userInfo?.ForeignLanguageScore &&
+          userInfo.ForeignLanguageScore !== "N/A"
+            ? `${userInfo.ForeignLanguageScore}점`
+            : "미입력"}{" "}
+          (TOEIC 700 이상)
+        </p>
         <p>
           영어 강의 | {englishLectureCount}개 ({englishLectureRequirement}개
           필요)
@@ -146,6 +184,17 @@ const MainPage = () => {
           필요)
         </p>
         {/* 필요한 다른 졸업 요건도 추가 가능 */}
+      </div>
+      <div className="english-score-input">
+        <label htmlFor="englishScore">영어 점수 입력:</label>
+        <input
+          type="number"
+          id="englishScore"
+          value={englishScore === "N/A" ? "" : englishScore} // N/A인 경우 빈 값으로 처리
+          onChange={(e) => setEnglishScore(e.target.value)}
+          placeholder="예: 750"
+        />
+        <button onClick={handleEnglishScoreUpdate}>저장</button>
       </div>
       <div className="navigation-buttons">
         <button onClick={() => handleNavigation("/course-list")}>

@@ -30,4 +30,10 @@ router.get(
   userController.getUserCourses
 );
 
+// 영어 점수 업데이트
+router.put(
+  "/update-english-score",
+  authMiddleware, // 인증 미들웨어
+  userController.updateEnglishScore // 영어 점수 업데이트 컨트롤러
+);
 module.exports = router;

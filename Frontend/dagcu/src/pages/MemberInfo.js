@@ -69,10 +69,14 @@ const MemberInfo = () => {
   if (error) {
     return <div>{error}</div>;
   }
-
+  const handleLogoClick = () => {
+    navigate("/"); // 메인 경로로 이동
+  };
   return (
     <div className="member-info-container">
-      <h1 className="logo">DAGCU</h1>
+      <h1 className="logo" onClick={handleLogoClick}>
+        DAGCU
+      </h1>
       <h2 className="page-title">이수과목</h2>
       <p className="subtitle">
         {userInfo?.Name || "N/A"}({userInfo?.StudentID || "N/A"}) |{" "}

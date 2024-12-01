@@ -72,11 +72,15 @@ const SignupPage = () => {
       }
     }
   };
-
+  const handleLogoClick = () => {
+    navigate("/"); // 메인 경로로 이동
+  };
   return (
     <div className="signup-container">
       <div className="signup-box">
-        <h1 className="logo">DAGCU</h1>
+        <h1 className="logo" onClick={handleLogoClick}>
+          DAGCU
+        </h1>
         <p className="subtitle">DGU AI Graduate Calculator for U</p>
         <form onSubmit={handleSubmit} className="signup-form">
           <div className="input-row">

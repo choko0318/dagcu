@@ -230,12 +230,16 @@ const AdditionalCalculations = () => {
 
     return comparisons;
   };
-
+  const handleLogoClick = () => {
+    navigate("/"); // 메인 경로로 이동
+  };
   const comparisons = compareRequirements();
 
   return (
     <div className="additional-calculations-container">
-      <h1 className="logo">DAGCU</h1>
+      <h1 className="logo" onClick={handleLogoClick}>
+        DAGCU
+      </h1>
       <h2 className="page-title">기타계산</h2>
       <p className="subtitle">
         전공 분류: {requirement.MajorClassification || "N/A"}

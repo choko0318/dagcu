@@ -35,13 +35,6 @@ const RecommendedCourses = () => {
         setCourses(response.data); // 전체 과목 중 추천 과목 설정
         setFilteredCourses(response.data); // 초기에는 전체 추천 과목 표시
 
-        // 선이수 과목 데이터 가져오기
-        const prerequisitesResponse = await axios.get(
-          "/api/prerequisite-courses", // API 경로
-          config
-        );
-        setPrerequisites(prerequisitesResponse.data); // 선이수 과목 설정
-
         setLoading(false);
       } catch (err) {
         console.error(err);
@@ -53,7 +46,45 @@ const RecommendedCourses = () => {
     fetchRecommendedCourses();
   }, [navigate]);
 
-  // 필터 처리
+  // 선이수 기반 필터링
+  const handlePrerequisiteFilter = async () => {
+    try {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        console.error("토큰 없음. 로그인 필요.");
+        navigate("/login");
+        return;
+      }
+
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      };
+
+      console.log("API 호출 시작: /api/recommended-courses/prerequisites");
+      const response = await axios.get(
+        "/api/recommended-courses/prerequisites",
+        config
+      );
+
+      console.log("API 응답:", response.data);
+      setFilteredCourses(response.data); // 후수 과목만 필터링
+      setFilter("Prerequisite");
+    } catch (err) {
+      console.error("API 호출 오류:", err);
+      if (err.response) {
+        console.error("응답 데이터:", err.response.data);
+        setError(
+          err.response.data.error ||
+            "추천 과목을 가져오는 중 오류가 발생했습니다."
+        );
+      } else {
+        setError("네트워크 오류가 발생했습니다.");
+      }
+    }
+  };
+
   const handleFilter = (type) => {
     setFilter(type);
     if (type === "") {
@@ -89,17 +120,6 @@ const RecommendedCourses = () => {
     }
   };
 
-  // 추천 버튼 클릭: 선이수 과목 기반 필터링
-  const handlePrerequisiteFilter = () => {
-    const recommendedCourses = courses.filter((course) =>
-      prerequisites.some(
-        (prerequisite) => prerequisite.CourseNum === course.CourseNum
-      )
-    );
-    setFilteredCourses(recommendedCourses);
-    setFilter("Prerequisite"); // 현재 필터를 "선이수 추천"으로 설정
-  };
-
   const handleNavigation = (path) => {
     navigate(path);
   };
@@ -111,12 +131,15 @@ const RecommendedCourses = () => {
   if (error) {
     return <div>{error}</div>;
   }
-
+  const handleLogoClick = () => {
+    navigate("/"); // 메인 경로로 이동
+  };
   return (
     <div className="recommended-container">
-      <h1 className="logo">DAGCU</h1>
+      <h1 className="logo" onClick={handleLogoClick}>
+        DAGCU
+      </h1>
       <h2 className="page-title">추천과목</h2>
-      <p className="subtitle">{/* 사용자 정보 또는 전공 정보 표시 */}</p>
       <div className="filter-buttons">
         <button
           onClick={() => handleFilter("")}

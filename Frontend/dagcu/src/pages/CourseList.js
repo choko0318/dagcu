@@ -161,10 +161,14 @@ const CourseList = () => {
       closeModal();
     }
   };
-
+  const handleLogoClick = () => {
+    navigate("/"); // 메인 경로로 이동
+  };
   return (
     <div className="course-list-container">
-      <h1 className="logo">DAGCU</h1>
+      <h1 className="logo" onClick={handleLogoClick}>
+        DAGCU
+      </h1>
       <p className="subtitle">DGU AI Graduate Calculator for U</p>
       <div className="search-filters">
         <h2 className="page-title">과목검색</h2>

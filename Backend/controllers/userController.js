@@ -94,7 +94,7 @@ exports.getUserInfo = async (req, res) => {
   const studentID = req.user.studentID;
   try {
     const [rows] = await db.execute(
-      "SELECT ul.StudentID, ul.Name, ui.Affiliation, ui.Major, ui.ForeignLanguageScore, ui.MajorClassification FROM UserList ul JOIN UserInfo ui ON ul.StudentID = ui.StudentID WHERE ul.StudentID = ?",
+      "SELECT ul.StudentID, ul.Name, ui.Affiliation, ui.Major, ui.ForeignLanguageScore, ui.MajorClassification, ui.ForeignLanguageScore FROM UserList ul JOIN UserInfo ui ON ul.StudentID = ui.StudentID WHERE ul.StudentID = ?",
       [studentID]
     );
 
@@ -290,3 +290,32 @@ function convertGradeToPoint(grade) {
   };
   return gradeMap[grade] !== undefined ? gradeMap[grade] : null;
 }
+exports.updateEnglishScore = async (req, res) => {
+  const studentID = req.user.studentID;
+  const { englishScore } = req.body;
+
+  if (
+    !englishScore ||
+    isNaN(englishScore) ||
+    englishScore < 0 ||
+    englishScore > 990
+  ) {
+    return res
+      .status(400)
+      .json({ error: "유효한 영어 점수를 입력해주세요 (0~990)." });
+  }
+
+  try {
+    await db.execute(
+      `UPDATE UserInfo SET ForeignLanguageScore = ? WHERE StudentID = ?`,
+      [englishScore, studentID]
+    );
+
+    res.json({ message: "영어 점수가 성공적으로 업데이트되었습니다." });
+  } catch (error) {
+    console.error("영어 점수 업데이트 오류:", error);
+    res
+      .status(500)
+      .json({ error: "영어 점수를 업데이트하는 중 오류가 발생했습니다." });
+  }
+};
